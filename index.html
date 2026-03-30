@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TABAY Service - เท่ ดุดัน</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Mitr', 'sans-serif'],
+                    },
+                    colors: {
+                        'tabay-black': '#02020B',   /* สีดำสนิท */
+                        'tabay-darker': '#050512',
+                        'tabay-dark': '#0D1546',    /* สีน้ำเงินเข้มที่สุด */
+                        'tabay-blue': '#2D4882',    /* สีน้ำเงินหลัก */
+                        'tabay-mid': '#5271A1',     /* สีน้ำเงินกลาง */
+                        'tabay-light': '#779ABF',   /* สีน้ำเงินอ่อน */
+                        'gold': '#D4AF37',          /* สีทองสำหรับเน้น */
+                    },
+                    boxShadow: {
+                        'neon': '0 0 15px rgba(45, 72, 130, 0.7)',
+                        'gold-glow': '0 0 10px rgba(212, 175, 55, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at center, #0D1546 0%, #02020B 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #02020B; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D4882; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37; 
+        }
+
+        /* Particles Effect */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Hover Glow Effect */
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Card Animation */
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        /* Table Stripe Effect */
+        table tbody tr:nth-child(odd) {
+            background-color: rgba(45, 72, 130, 0.15);
+        }
+        table tbody tr:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            cursor: pointer;
+        }
+        table td, table th {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Modal Transitions */
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+            transform: translateY(20px) scale(0.95);
+        }
+        .modal.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-black">
+
+    <div id="particles-js"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+        
+        <header class="flex items-center justify-between pb-8 border-b border-white/10 mb-12 fade-in-up">
+            <div class="flex items-center gap-4">
+                <div class="p-3 bg-tabay-dark rounded-xl shadow-neon border border-tabay-blue/30">
+                    <img src="https://r2.erweima.ai/ai_background/b0333d7b-402b-4d40-b461-8285584857b2.png" alt="TABAY Logo" class="w-12 h-12 object-contain">
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-white tracking-wider">TABAY <span class="text-gold">SERVICE</span></h1>
+                    <p class="text-tabay-light text-sm">รับบริการครบวงจร เท่ ดุดัน จริงใจ</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="text-right">
+                    <p class="text-sm font-medium text-white">ยอดผู้ใช้บริการ</p>
+                    <p class="text-2xl font-bold text-gold glow-text">9,999+</p>
+                </div>
+                <div class="w-16 h-16 rounded-full border-4 border-tabay-blue shadow-neon p-1 bg-tabay-darker">
+                    <img src="https://i.pinimg.com/736x/89/54/6e/89546e01a05ff761b0c0ff0f56a5c374.jpg" alt="Admin Avatar" class="w-full h-full rounded-full object-cover">
+                </div>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <section class="lg:col-span-2 space-y-10">
+                
+                <div class="bg-tabay-darker/60 p-8 rounded-3xl border border-white/5 shadow-2xl fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="tags" class="w-8 h-8 text-gold"></i>
+                            <h2 class="text-2xl font-semibold text-white tracking-wide">ตารางเรท<span class="text-gold">ฝากขาย</span> (TABAY)</h2>
+                        </div>
+                        <button onclick="openModal('sale')" class="flex items-center gap-2 text-sm text-tabay-light hover:text-gold transition-colors">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                            ดูตัวเต็ม
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-tabay-light">
+                            <thead class="text-xs text-white uppercase bg-tabay-dark/50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 rounded-l-lg">ช่วงราคา (B)</th>
+                                    <th scope="col" class="px-6 py-4 rounded-r-lg">ค่าบริการ (B / %)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                <tr><td class="px-6 py-4 font-medium text-white">500 - 900</td><td class="px-6 py-4">15 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">1000 - 1499</td><td class="px-6 py-4">25 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">1500 - 1999</td><td class="px-6 py-4">30 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">2000 - 2499</td><td class="px-6 py-4">45 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">2500 - 4499</td><td class="px-6 py-4">57 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">4500 - 5999</td><td class="px-6 py-4">65 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">6000 - 7500</td><td class="px-6 py-4">80 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">7501 - 8500</td><td class="px-6 py-4">95 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">8501 - 9999</td><td class="px-6 py-4">145 B</td></tr>
+                                <tr class="border-t-2 border-gold/30 bg-gold/5"><td class="px-6 py-4 font-bold text-gold">10,000+</td><td class="px-6 py-4 font-bold text-gold">1.9%</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">14,000+</td><td class="px-6 py-4">2.5%</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">19,000+</td><td class="px-6 py-4">3.5%</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">30,000+</td><td class="px-6 py-4">4.5%</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">50,000+</td><td class="px-6 py-4">4.7%</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">70,000+</td><td class="px-6 py-4">5%</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">100,000</td><td class="px-6 py-4">5.5%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-6 flex items-center gap-3 p-4 bg-tabay-dark/30 rounded-xl border border-tabay-blue/20">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-gold shrink-0"></i>
+                        <p class="text-xs text-tabay-light">หมายเหตุ: ค่าบริการฝากขายคิดตามช่วงราคาที่กำหนด คนที่เพิ่งใช้บริการจ่ายก่อนทุกกรณี</p>
+                    </div>
+                </div>
+
+                <div class="bg-tabay-darker/60 p-8 rounded-3xl border border-white/5 shadow-2xl fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="search" class="w-8 h-8 text-gold"></i>
+                            <h2 class="text-2xl font-semibold text-white tracking-wide">เรทราคา<span class="text-gold">หาไอดี</span></h2>
+                        </div>
+                        <button onclick="openModal('find')" class="flex items-center gap-2 text-sm text-tabay-light hover:text-gold transition-colors">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                            ดูตัวเต็ม
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-tabay-light">
+                            <thead class="text-xs text-white uppercase bg-tabay-dark/50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 rounded-l-lg">ช่วงราคาไอดี (B)</th>
+                                    <th scope="col" class="px-6 py-4 rounded-r-lg">ค่าบริการหา (B)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                <tr><td class="px-6 py-4 font-medium text-white">1 - 900</td><td class="px-6 py-4">40 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">901 - 1900</td><td class="px-6 py-4">57 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">1901 - 3500</td><td class="px-6 py-4">75 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">3501 - 6000</td><td class="px-6 py-4">90 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">6001 - 9000</td><td class="px-6 py-4">120 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">9001 - 9,999</td><td class="px-6 py-4">145 B</td></tr>
+                                <tr class="border-t-2 border-gold/30 bg-gold/5"><td class="px-6 py-4 font-bold text-gold">10,000+++</td><td class="px-6 py-4 font-bold text-gold">170 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">15,000+++</td><td class="px-6 py-4">200 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">30,000+++</td><td class="px-6 py-4">250 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">50,000+++</td><td class="px-6 py-4">275 B</td></tr>
+                                <tr><td class="px-6 py-4 font-medium text-white">100,000+++</td><td class="px-6 py-4">300 B</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-6 flex items-center gap-3 p-4 bg-tabay-dark/30 rounded-xl border border-tabay-blue/20">
+                        <i data-lucide="info" class="w-5 h-5 text-gold shrink-0"></i>
+                        <p class="text-xs text-tabay-light">หมายเหตุ: ค่าบริการหาไอดีคิดเป็นยอดสุทธิตามช่วงราคา รับประกันความพึงพอใจ</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <aside class="space-y-10 lg:col-span-1">
+                
+                <div class="bg-tabay-darker p-8 rounded-3xl border border-white/5 shadow-xl fade-in-up" style="animation-delay: 0.3s;">
+                    <h3 class="text-xl font-medium text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="calendar-days" class="w-6 h-6 text-tabay-blue"></i>
+                        เช็คสถานะงาน
+                    </h3>
+                    <a href="#" class="group block w-full bg-tabay-blue p-5 rounded-2xl text-center text-white font-semibold shadow-neon hover-glow transition-all duration-300">
+                        <div class="flex items-center justify-center gap-3">
+                            <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                            คลิกเพื่อเช็คคิวงาน
+                        </div>
+                        <span class="block text-xs text-white/70 font-normal mt-1 group-hover:text-gold">อัปเดตเรียลไทม์</span>
+                    </a>
+                </div>
+
+                <div class="bg-tabay-darker/80 p-8 rounded-3xl border border-white/5 shadow-xl space-y-8 fade-in-up" style="animation-delay: 0.4s;">
+                    <div>
+                        <h4 class="text-lg font-medium text-white mb-5 flex items-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-5 h-5 text-tabay-mid"></i>
+                            วิธีสั่งซื้อ <span class="text-xs text-tabay-light font-normal">(4 ขั้นตอน)</span>
+                        </h4>
+                        <ol class="space-y-4 text-sm text-tabay-light list-decimal list-inside">
+                            <li class="pl-2">ทักแชทแจ้งความต้องการ</li>
+                            <li class="pl-2">ส่งรายละเอียดตามบรีฟ</li>
+                            <li class="pl-2">ชำระเงินตามเรทราคา</li>
+                            <li class="pl-2">รอรับคิวและงาน</li>
+                        </ol>
+                    </div>
+                    <div class="border-t border-white/10 pt-8">
+                        <h4 class="text-lg font-medium text-white mb-5 flex items-center gap-2">
+                            <i data-lucide="package" class="w-5 h-5 text-tabay-mid"></i>
+                            การฝากขาย <span class="text-xs text-tabay-light font-normal">(สิ่งที่ต้องเตรียม)</span>
+                        </h4>
+                        <ul class="space-y-3 text-sm text-tabay-light list-disc list-inside">
+                            <li class="pl-2">รูปสกิน เครื่องประดับ</li>
+                            <li class="pl-2">สัตว์เลี้ยง ของในคลัง</li>
+                            <li class="pl-2">ยอดเติม แรงค์</li>
+                            <li class="pl-2">กรอกแบบฟอร์มร้าน</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-tabay-darker/90 p-8 rounded-3xl border-2 border-gold/20 shadow-gold-glow text-center fade-in-up hover-glow" style="animation-delay: 0.5s;">
+                    <i data-lucide="user-plus" class="w-12 h-12 text-gold mx-auto mb-5 drop-shadow-gold"></i>
+                    <h3 class="text-2xl font-bold text-white mb-2">สนใจใช้บริการ?</h3>
+                    <p class="text-tabay-light text-sm mb-6 px-4">ทักหาแอดมินได้ตลอด 24 ชม. ตอบไว งานดี งานเท่</p>
+                    <a href="https://m.me/your_facebook_page" target="_blank" class="block w-full bg-gold p-4 rounded-xl text-tabay-black font-bold text-center hover:bg-white transition-colors">
+                        ทักแชท Facebook เลย!
+                    </a>
+                </div>
+
+            </section>
+        </main>
+
+        <footer class="mt-20 pt-10 border-t border-white/10 text-center text-tabay-light text-xs fade-in-up" style="animation-delay: 0.6s;">
+            <p>&copy; 2024 TABAY Service. All rights reserved.</p>
+            <p class="mt-1">Design with <span class="text-gold">♥</span> for Dark and Bold style.</p>
+        </footer>
+    </div>
+
+    <div id="modalSale" class="modal fixed inset-0 z-50 flex items-center justify-center bg-tabay-black/90 backdrop-blur-sm invisible opacity-0 p-4" onclick="closeModalOnBG(event, 'modalSale')">
+        <div class="modal-content bg-tabay-darker w-full max-w-4xl rounded-3xl border border-gold/30 shadow-gold-glow p-6 sm:p-10 relative overflow-hidden">
+            <button onclick="closeModal('modalSale')" class="absolute top-6 right-6 text-white hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <img src="https://r2.erweima.ai/ai_background/48f43eb9-19b8-472e-8360-a292d37c7689.png" alt="Sale Rate Full" class="w-full h-auto rounded-xl shadow-2xl border border-white/10">
+            <p class="text-gold text-center mt-6 font-bold text-xl drop-shadow-gold">เรทราคาฝากขาย ตัวเต็ม</p>
+        </div>
+    </div>
+
+    <div id="modalFind" class="modal fixed inset-0 z-50 flex items-center justify-center bg-tabay-black/90 backdrop-blur-sm invisible opacity-0 p-4" onclick="closeModalOnBG(event, 'modalFind')">
+        <div class="modal-content bg-tabay-darker w-full max-w-4xl rounded-3xl border border-gold/30 shadow-gold-glow p-6 sm:p-10 relative overflow-hidden">
+            <button onclick="closeModal('modalFind')" class="absolute top-6 right-6 text-white hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <img src="https://r2.erweima.ai/ai_background/d559c5d0-9941-4148-b39b-8f0a05587f0b.png" alt="Find ID Rate Full" class="w-full h-auto rounded-xl shadow-2xl border border-white/10">
+            <p class="text-gold text-center mt-6 font-bold text-xl drop-shadow-gold">เรทราคาหาไอดี ตัวเต็ม</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // Modal Functions
+        function openModal(type) {
+            const modalId = type === 'sale' ? 'modalSale' : 'modalFind';
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevents scroll
+        }
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('opacity-0');
+            modal.classList.remove('active');
+            setTimeout(() => modal.classList.add('invisible'), 300); // Wait for transition
+            document.body.style.overflow = ''; // Restores scroll
+        }
+        function closeModalOnBG(event, modalId) {
+            if (event.target.id === modalId) {
+                closeModal(modalId);
+            }
+        }
+
+        // Particles.js Config
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#779ABF", "#D4AF37"] }, // Blue and Gold
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#2D4882", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
